@@ -1,0 +1,48 @@
+version: '2'
+services:
+  registry-service:
+    image: my-prefix/registry-service
+    container_name: "registry-service"
+    environment:
+      - CONFIG_SERVER_URL=http://configuration-service:8888
+      - CONFIG_EUREKA_URL=http://registry-service:8761
+    ports:
+      - "8761:8761"
+  routing-service:
+    image: my-prefix/routing-service
+    container_name: "routing-service"
+    environment:
+      - CONFIG_SERVER_URL=http://configuration-service:8888
+      - CONFIG_EUREKA_URL=http://registry-service:8761
+    ports:
+      - "8082:8082"
+  customer-service:
+    image: my-prefix/customer-service
+    container_name: "customer-service"
+    environment:
+      - CONFIG_SERVER_URL=http://configuration-service:8888
+      - CONFIG_POSTGRESQL_URL=jdbc:postgresql://postgresql-service/postgres
+      - CONFIG_EUREKA_URL=http://registry-service:8761
+      - CONFIG_RABBITMQ_ADDRESSES=rabbitmq-service:5672
+    ports:
+      - "8090:8090"
+  order-service:
+    image: my-prefix/order-service
+    container_name: "order-service"
+    environment:
+      - CONFIG_SERVER_URL=http://configuration-service:8888
+      - CONFIG_ELASTICSEARCH_URL=elastic-service:9300
+      - CONFIG_EUREKA_URL=http://registry-service:8761
+      - CONFIG_RABBITMQ_ADDRESSES=rabbitmq-service:5672
+    ports:
+      - "8095:8095"
+  dispatcher-service:
+    image: my-prefix/dispatcher-service
+    container_name: "dispatcher-service"
+    environment:
+      - CONFIG_SERVER_URL=http://configuration-service:8888
+      - CONFIG_POSTGRESQL_URL=jdbc:postgresql://postgresql-service/postgres
+      - CONFIG_EUREKA_URL=http://registry-service:8761
+      - CONFIG_RABBITMQ_ADDRESSES=rabbitmq-service:5672
+    ports:
+      - "8100:8100"

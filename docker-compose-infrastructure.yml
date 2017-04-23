@@ -1,0 +1,24 @@
+version: '2'
+services:
+  configuration-service:
+    image: my-prefix/configuration-service
+    container_name: "configuration-service"
+    ports:
+      - "8888:8888"
+  postgresql-service:
+    image: postgres:9.6.2
+    container_name: "postgresql-service"
+    ports:
+      - "5432:5432"
+  elastic-service:
+    image: elasticsearch:2.4.4
+    container_name: "elastic-service"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  rabbitmq-service:
+    image: rabbitmq:management
+    container_name: "rabbitmq-service"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
