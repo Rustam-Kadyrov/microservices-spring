@@ -46,19 +46,19 @@ Run containers:
 
 Through routing service:
 
-[Dispatcher service swagger](http://192.168.99.100:8082/dispatcher-service/swagger-ui.html)
+[Dispatcher service swagger](http://localhost:8082/dispatcher-service/swagger-ui.html)
 
-[Customer service swagger](http://192.168.99.100:8082/customer-service/swagger-ui.html)
+[Customer service swagger](http://localhost:8082/customer-service/swagger-ui.html)
 
-[Order service swagger](http://192.168.99.100:8082/order-service/swagger-ui.html)
+[Order service swagger](http://localhost:8082/order-service/swagger-ui.html)
 
 ## Eureka
 
-[Link to UI](http://192.168.99.100:8761)
+[Link to UI](http://localhost:8761)
 
 ## Elastic search
 
-[Status link](http://192.168.99.100:9200)
+[Status link](http://localhost:9200)
 
     login: elastic
     password: changeme
@@ -66,7 +66,7 @@ Through routing service:
 
 ## Rabbit MQ
 
-[Link to UI](http://192.168.99.100:15672)
+[Link to UI](http://localhost:15672)
  
     login: guest
     password: guest
